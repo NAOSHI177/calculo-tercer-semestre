@@ -40,21 +40,46 @@ calculo-tercer-semestre/
 └── README.md
 ```
 
-## Instalación
+## Instalación y ejecución con entorno virtual (venv)
 
-1. Crear y activar entorno virtual (opcional pero recomendado).
-2. Instalar dependencias:
+Estas instrucciones están pensadas para PowerShell, desde la carpeta del proyecto `calculo-tercer-semestre`.
 
-```bash
+1. Crear el entorno virtual:
+
+```powershell
+python -m venv .venv
+```
+
+2. Activar el entorno virtual:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+3. Actualizar `pip` e instalar dependencias:
+
+```powershell
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-## Ejecución
+4. Ejecutar la aplicación:
 
-Desde la raíz del proyecto:
-
-```bash
+```powershell
 streamlit run app.py
+```
+
+5. Si PowerShell bloquea la activación:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+```
+
+6. Salir del entorno virtual:
+
+```powershell
+deactivate
 ```
 
 ## Notas importantes
@@ -66,4 +91,3 @@ streamlit run app.py
   Esto permite ajustar fácilmente la interpretación si el enunciado original tiene ambigüedad en la notación.
 
 - **ACF en falsa posición:** se incluye una nota aclarando que puede variar por convención; en esta app se aplica redondeo a 3 cifras significativas.
-
