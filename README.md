@@ -82,6 +82,41 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 deactivate
 ```
 
+### Linux (bash)
+
+Desde la raíz del proyecto:
+
+1. Crear el entorno virtual:
+
+```bash
+python3 -m venv .venv
+```
+
+2. Activar el entorno virtual:
+
+```bash
+source .venv/bin/activate
+```
+
+3. Actualizar `pip` e instalar dependencias:
+
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+4. Ejecutar la aplicación:
+
+```bash
+streamlit run app.py
+```
+
+5. Salir del entorno virtual:
+
+```bash
+deactivate
+```
+
 ## Notas importantes
 
 - **Ejercicio 4 (Secante):** en `methods/secante.py` se incluyen constantes editables al inicio:
