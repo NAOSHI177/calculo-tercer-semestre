@@ -29,7 +29,7 @@ EXERCISES = {
     "e^x + 2^(-x) + 2 cos(x) - 6 = 0\n"
     "(Método de Newton-Raphson)": render_newton_raphson,
     "4 - Por el método de la secante calcule la raíz aproximada de la ecuación:\n"
-    "(2e^x - x^2)^(1/3) = 0\n"
+    "(2e^x - x^2)*1/3 = 0\n"
     "con ε < 10^-3.\n"
     "(Método de la Secante)": render_secante,
     "5 - Encuentra las soluciones reales positivas de la siguiente ecuación, por el método iterativo lineal realizando 6 iteraciones:\n"

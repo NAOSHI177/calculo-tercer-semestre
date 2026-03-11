@@ -13,14 +13,9 @@ from utils.tables import build_sign_scan_table, find_sign_change_interval, round
 
 X = sp.symbols("x")
 
-# NOTA IMPORTANTE:
-# Si la notación original del ejercicio 4 es distinta, modifica esta cadena.
-SECANT_EXERCISE_EXPR_STR = "(2*exp(x) - x**2)**(1/3)"
-
-# Para evitar ambigüedad de rama compleja en potencia 1/3, resolvemos la forma equivalente:
-# (2*e^x - x^2)^(1/3)=0  <=>  2*e^x - x^2 = 0
-# Si tu docente exige otra interpretación, ajusta esta constante.
-SECANT_SOLVER_EXPR_STR = "2*exp(x) - x**2"
+# Si el enunciado del ejercicio cambia, ajusta estas constantes.
+SECANT_EXERCISE_EXPR_STR = "(2*exp(x) - x**2)*(1/3)"
+SECANT_SOLVER_EXPR_STR = "(2*exp(x) - x**2)*(1/3)"
 
 F_EXERCISE_EXPR = sp.sympify(SECANT_EXERCISE_EXPR_STR, locals={"x": X, "exp": sp.exp})
 F_SOLVER_EXPR = sp.sympify(SECANT_SOLVER_EXPR_STR, locals={"x": X, "exp": sp.exp})
@@ -74,16 +69,11 @@ def render() -> None:
     st.subheader("A. Enunciado completo")
     st.write(
         "Por el método de la secante, calcule la raíz aproximada de "
-        r"$(2e^x - x^2)^{1/3}=0$ con $\varepsilon < 10^{-3}$."
+        r"$(2e^x - x^2)\cdot\frac{1}{3}=0$ con $\varepsilon < 10^{-3}$."
     )
 
     st.subheader("B. Función definida claramente")
-    st.latex(r"f(x)=\left(2e^x-x^2\right)^{1/3}")
-    st.info(
-        "Para el cálculo numérico se usa la ecuación equivalente "
-        r"$\phi(x)=2e^x-x^2=0$, que tiene la misma raíz y evita ambigüedad en la potencia 1/3."
-    )
-    st.latex(r"\phi(x)=2e^x-x^2")
+    st.latex(r"f(x)=\left(2e^x-x^2\right)\cdot\frac{1}{3}")
 
     eps = st.number_input("Tolerancia ε", value=EPS_DEFAULT, min_value=1e-6, format="%.6f")
 
@@ -147,18 +137,17 @@ def render() -> None:
         x_min,
         x_max,
         root=root_approx,
-        title="Secante sobre φ(x)=2e^x-x^2",
+        title=r"Secante sobre f(x)=(2e^x-x^2)\cdot 1/3",
     )
     st.pyplot(fig)
 
     with st.expander("Configuración editable del ejercicio 4"):
         st.code(
-            "SECANT_EXERCISE_EXPR_STR = '(2*exp(x) - x**2)**(1/3)'\n"
-            "SECANT_SOLVER_EXPR_STR = '2*exp(x) - x**2'",
+            "SECANT_EXERCISE_EXPR_STR = '(2*exp(x) - x**2)*(1/3)'\n"
+            "SECANT_SOLVER_EXPR_STR = '(2*exp(x) - x**2)*(1/3)'",
             language="python",
         )
         st.write(
             "Si el enunciado original usa otra notación, modifica esas constantes al inicio "
             "del archivo `methods/secante.py`."
         )
-
